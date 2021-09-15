@@ -1,3 +1,4 @@
+#!/bin/bash
 sleep 60;
 echo "Halftime" | figlet
 sleep 10;
