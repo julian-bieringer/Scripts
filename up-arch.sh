@@ -11,6 +11,12 @@ upgradeable=$(pamac checkupdates -a --devel | tail -n +2 | awk '{ print $1 }')
 echo $upgradeable
 echo ""
 while read line; do
+	if [ "$line"  = '' ]; then
+                continue;
+        fi
+	if [ "$line"  = 'Out' ]; then
+		break;
+	fi
 	echo "";
 	echo -e "\033[32m*pamac build $line*\033[0m";
 	pamac build --no-confirm $line;
