@@ -59,7 +59,7 @@ if [ ${outputDirectory:${#outputDirectory}-1:1} == '/' ]; then #check if output 
 fi;
 
 while IFS='' read -r line || [[ -n "$line" ]]; do
-    coShellInput=$coShellInput$"youtube-dl -o \"$outputDirectory/%(title)s.%(ext)s\" --extract-audio --audio-format $audioFormat --audio-quality 0 --external-downloader aria2c --external-downloader-args \"-x 16 -s 16 -k 1M\" $line\n";
+    coShellInput=$coShellInput$"yt-dlp -o \"$outputDirectory/%(title)s.%(ext)s\" --extract-audio --audio-format $audioFormat --audio-quality 0 --external-downloader aria2c --external-downloader-args \"-x 16 -s 16 -k 1M\" $line\n";
 done < $urlFile #for each line (url) in the file call youtube-dl with outputDirectory\title.extension and use aria2c as a downloader to support parallel download connections
 
 echo -ne $coShellInput
